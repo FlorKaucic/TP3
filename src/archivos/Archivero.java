@@ -13,16 +13,13 @@ public class Archivero {
 		FileReader fr = null;
 		BufferedReader br = null;
 		try {
-			String linea;
 			archivo = new File(ruta);
 			fr = new FileReader(archivo);
 			br = new BufferedReader(fr);
-			String cadena;
-			int tam = 0;
-			if ((linea = br.readLine()) != null)
-				cadena = linea;	
-			
-			
+			String[] data = br.readLine().split(" ");
+			for(int i=0; i<data.length; i++){
+				
+			}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
