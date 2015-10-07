@@ -7,7 +7,7 @@ import java.io.IOException;
 
 import funcion.Funcion;
 
-public class ManejoArchivo {
+public class Archivero {
 	public void leerArchivo(String ruta, Funcion fn) {
 		File archivo = null;
 		FileReader fr = null;
@@ -20,7 +20,8 @@ public class ManejoArchivo {
 			String cadena;
 			int tam = 0;
 			if ((linea = br.readLine()) != null)
-				cadena = linea;				
+				cadena = linea;	
+			
 			
 			
 		} catch (Exception e) {
