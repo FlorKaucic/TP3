@@ -15,5 +15,10 @@ public class Suma implements Funcion {
 	public double calcular() {
 		return valor1.calcular() + valor2.calcular();
 	}
+	
+	@Override
+	public String toString(){
+		return valor1 + " + " + valor2;
+	}
 
 }
