@@ -14,6 +14,6 @@ public class Numero implements Funcion {
 
 	@Override
 	public String toString(){
-		return "Valor: "+this.value;
+		return String.valueOf(this.value);
 	}
 }
