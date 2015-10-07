@@ -10,7 +10,7 @@ import funcion.operaciones.*;
 import funcion.operandos.*;
 
 public class Archivero {
-	public void leerArchivo(String ruta, FuncionCompuesta fn, Incognita[] inc, double[] val) {
+	public void leer(String ruta, FuncionCompuesta fn, Incognita[] inc, double[] val) {
 		File archivo = null;
 		FileReader fr = null;
 		BufferedReader br = null;
@@ -19,7 +19,7 @@ public class Archivero {
 			fr = new FileReader(archivo);
 			br = new BufferedReader(fr);
 			String[] data = br.readLine().split(" ");
-			
+			String linea;
 			for (int i = 0; i < data.length; i++) {
 				if (esOperador(data[i])) {
 					Funcion func;
@@ -55,6 +55,10 @@ public class Archivero {
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	public void escribir(String ruta, double[] val) {
+		
 	}
 
 	private boolean esOperador(String data) {

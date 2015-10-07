@@ -11,7 +11,7 @@ public class Logaritmo implements Funcion {
 
 	@Override
 	public double calcular() {
-		return valor.calcular();
+		return Math.log(valor.calcular());
 	}
 
 	@Override
