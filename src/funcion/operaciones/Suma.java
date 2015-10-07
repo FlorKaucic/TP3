@@ -8,7 +8,6 @@ public class Suma implements Funcion {
 	
 	// FIX TEMPORAL, HAY QUE ARREGLARLO
 	
-	
 	@Override
 	public double calcular() {
 		return valor1.calcular() + valor2.calcular();
