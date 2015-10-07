@@ -1,5 +1,24 @@
 package funcion.operaciones;
 
-public class Multiplicacion {
+import funcion.Funcion;
+
+public class Multiplicacion implements Funcion {
+	Funcion valor1;
+	Funcion valor2;
+	
+	public Multiplicacion(Funcion valor1, Funcion valor2){
+		this.valor1 = valor1;
+		this.valor2 = valor2;
+	}
+	
+	@Override
+	public double calcular() {
+		return valor1.calcular() * valor2.calcular();
+	}
+
+	@Override
+	public String toString() {
+		return "(" + valor1 + " * " + valor2 + ")";
+	}
 
 }
