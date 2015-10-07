@@ -1,4 +1,6 @@
-package logica;
+package funcion.operandos;
+
+import funcion.Funcion;
 
 public class Numero implements Funcion {
 	private double value;

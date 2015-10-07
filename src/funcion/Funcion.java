@@ -1,4 +1,4 @@
-package logica;
+package funcion;
 
 public interface Funcion {
 
