@@ -24,7 +24,6 @@ public class Archivero {
 			String linea = br.readLine();
 			int num = Integer.parseInt(linea.split(" ")[0]);
 			int tam = Integer.parseInt(linea.split(" ")[1]);
-			ListaIncognitas.getIncognita(num);
 			val = new double[tam][num];
 			for (int j = 0; j < tam; j++) {
 				linea = br.readLine();
@@ -32,26 +31,13 @@ public class Archivero {
 					val[j][k] = Double.parseDouble(linea.split(" ")[k]);
 				}
 			}
-			for (int i = 0; i < data.length; i++) {
+			for (int i = 0; i < data.length - 1; i++) {
 				if (esOperador(data[i])) {
 					FuncionCompuesta func = new FuncionCompuesta();
 					Funcion v1 = fn.remover();
-					if (data[i].equals("ln"))
-						func.agregarOperacion(Operaciones::Logaritmo);
-					else {
-						Funcion v2 = fn.remover();
-						func.agregar(v2);
-						if (data[i].equals("+"))
-							func.agregarOperacion(Operaciones::Suma);
-						else if (data[i].equals("-"))
-							func.agregarOperacion(Operaciones::Resta);
-						else if (data[i].equals("/"))
-							func.agregarOperacion(Operaciones::Division);
-						else if (data[i].equals("*"))
-							func.agregarOperacion(Operaciones::Multiplicacion);
-						else
-							func.agregarOperacion(Operaciones::Potencia);
-					}
+					agregarOp(data[i], func);
+					if (!data[i].equals("ln"))
+						func.agregar(fn.remover());
 					func.agregar(v1);
 					fn.agregar(func);
 				} else if (esIncognita(data[i])) {
@@ -60,6 +46,7 @@ public class Archivero {
 					fn.agregar(new Numero(Double.parseDouble(data[i])));
 				}
 			}
+			agregarOp(data[data.length - 1], fn);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -81,7 +68,7 @@ public class Archivero {
 			pw = new PrintWriter(fw);
 			pw.println(res.length);
 			for (int i = 0; i < res.length; i++)
-				pw.println((int)res[i]);
+				pw.println((int) res[i]);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -91,6 +78,23 @@ public class Archivero {
 			} catch (Exception e2) {
 				e2.printStackTrace();
 			}
+		}
+	}
+
+	private static void agregarOp(String data, FuncionCompuesta fn){
+		if (data.equals("ln"))
+			fn.agregarOperacion(Operacion::Logaritmo);
+		else {
+			if (data.equals("+"))
+				fn.agregarOperacion(Operacion::Suma);
+			else if (data.equals("-"))
+				fn.agregarOperacion(Operacion::Resta);
+			else if (data.equals("/"))
+				fn.agregarOperacion(Operacion::Division);
+			else if (data.equals("*"))
+				fn.agregarOperacion(Operacion::Multiplicacion);
+			else
+				fn.agregarOperacion(Operacion::Potencia);
 		}
 	}
 
