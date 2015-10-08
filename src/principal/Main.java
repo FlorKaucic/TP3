@@ -4,7 +4,7 @@ import java.io.File;
 
 import archivos.Archivero;
 import funcion.FuncionCompuesta;
-import funcion.operandos.ListaIncognitas;
+import funcion.operandos.ListaIncognita;
 
 
 public class Main {
@@ -17,7 +17,7 @@ public class Main {
 		folder = new File("Salidas");
 		folder.mkdir();
 		FuncionCompuesta fc;
-		ListaIncognitas x = ListaIncognitas.getIncognita(3);
+		ListaIncognita x = ListaIncognita.getIncognita(3);
 
 		for (int f = 0; f < cant; f++) {
 			String name = new String(listOfFiles[f].getName());

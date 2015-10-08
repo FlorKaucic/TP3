@@ -1,17 +1,17 @@
 package funcion.operandos;
 
-public class ListaIncognitas {
-	private ListaIncognitas(int tam) {
+public class ListaIncognita {
+	private ListaIncognita(int tam) {
 		this.valor = new double[tam];
 	}
 
-	private static ListaIncognitas lista = null;
+	private static ListaIncognita lista = null;
 	private double[] valor;
 	private static final String[] nombre = { "x", "y", "z" };
 
-	public static ListaIncognitas getIncognita(int tam) {
+	public static ListaIncognita getIncognita(int tam) {
 		if (lista == null) {
-			lista = new ListaIncognitas(tam);
+			lista = new ListaIncognita(tam);
 		}
 		return lista;
 	}
