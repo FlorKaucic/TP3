@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import funcion.*;
-import funcion.operaciones.*;
 import funcion.operandos.*;
 
 public class Archivero {
@@ -29,29 +28,31 @@ public class Archivero {
 			val = new double[tam][num];
 			for (int j = 0; j < tam; j++) {
 				linea = br.readLine();
-				for(int k = 0; k < num; k++){
+				for (int k = 0; k < num; k++) {
 					val[j][k] = Double.parseDouble(linea.split(" ")[k]);
 				}
 			}
 			for (int i = 0; i < data.length; i++) {
 				if (esOperador(data[i])) {
-					Funcion func;
+					FuncionCompuesta func = new FuncionCompuesta();
 					Funcion v1 = fn.remover();
 					if (data[i].equals("ln"))
-						func = new Logaritmo(v1);
+						func.agregarOperacion(Operaciones::Logaritmo);
 					else {
 						Funcion v2 = fn.remover();
+						func.agregar(v2);
 						if (data[i].equals("+"))
-							func = new Suma(v2, v1);
+							func.agregarOperacion(Operaciones::Suma);
 						else if (data[i].equals("-"))
-							func = new Resta(v2, v1);
+							func.agregarOperacion(Operaciones::Resta);
 						else if (data[i].equals("/"))
-							func = new Division(v2, v1);
-						else if(data[i].equals("*"))
-							func = new Multiplicacion(v2, v1);
+							func.agregarOperacion(Operaciones::Division);
+						else if (data[i].equals("*"))
+							func.agregarOperacion(Operaciones::Multiplicacion);
 						else
-							func = new Potencia(v2, v1);
+							func.agregarOperacion(Operaciones::Potencia);
 					}
+					func.agregar(v1);
 					fn.agregar(func);
 				} else if (esIncognita(data[i])) {
 					fn.agregar(new Incognita(data[i]));
