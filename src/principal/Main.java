@@ -1,32 +1,23 @@
 package principal;
 
+import archivos.Archivero;
 import funcion.FuncionCompuesta;
-import funcion.operaciones.*;
-import funcion.operandos.*;
+import funcion.operandos.ListaIncognitas;
 
 public class Main {
 
 	public static void main(String[] args) {
-		ListaIncognitas x;
 		FuncionCompuesta fc = new FuncionCompuesta();
-//		fc.agregar(
-//				new Suma(
-//						new Multiplicacion(new Numero(4),
-//								new Logaritmo(
-//										new Division(
-//												new Numero(5), 
-//												new Potencia(
-//														new Incognita("x"),
-//														new Numero(2)
-//												)))),
-//						new Numero(9)
-//				));
-		ListaIncognitas.getIncognita(0).setValor(0, 3);
-		System.out.println(fc.calcular());
+		double[][] val = Archivero.leer("entrada.in", fc);
+		double[] res = new double[val.length];
+		ListaIncognitas x = ListaIncognitas.getIncognita(0);
+		for(int i = 0; i<val.length;i++){
+			for(int j = 0; j<val[0].length; j++)
+				x.setValor(j, val[i][j]);
+			System.out.println(fc.calcular());
+		}
 		System.out.println(fc.remover());
-		System.out.println(fc.remover());
-		System.out.println(fc.calcular());
-
+		Archivero.escribir("salida.out", res);
 	}
 
 }

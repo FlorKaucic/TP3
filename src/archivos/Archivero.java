@@ -3,26 +3,29 @@ package archivos;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import funcion.*;
 import funcion.operaciones.*;
 import funcion.operandos.*;
 
 public class Archivero {
-	public int leer(String ruta, FuncionCompuesta fn, double[][] val) {
+	public static double[][] leer(String ruta, FuncionCompuesta fn) {
 		File archivo = null;
 		FileReader fr = null;
 		BufferedReader br = null;
-		int num = 0;
+		double[][] val = null;
 		try {
 			archivo = new File(ruta);
 			fr = new FileReader(archivo);
 			br = new BufferedReader(fr);
 			String[] data = br.readLine().split(" ");
 			String linea = br.readLine();
-			num = Integer.parseInt(linea.split(" ")[0]);
+			int num = Integer.parseInt(linea.split(" ")[0]);
 			int tam = Integer.parseInt(linea.split(" ")[1]);
+			ListaIncognitas.getIncognita(num);
 			val = new double[tam][num];
 			for (int j = 0; j < tam; j++) {
 				linea = br.readLine();
@@ -64,14 +67,31 @@ public class Archivero {
 				e.printStackTrace();
 			}
 		}
-		return num;
+		return val;
 	}
 
-	public void escribir(String ruta, double[] val) {
-
+	public static void escribir(String ruta, double[] res) {
+		FileWriter fw = null;
+		PrintWriter pw = null;
+		try {
+			fw = new FileWriter(ruta);
+			pw = new PrintWriter(fw);
+			pw.println(res.length);
+			for (int i = 0; i < res.length; i++)
+				pw.println(res[i]);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (fw != null)
+					fw.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
 	}
 
-	private boolean esOperador(String data) {
+	private static boolean esOperador(String data) {
 		String[] ops = { "+", "-", "/", "*", "ln" };
 		for (String op : ops)
 			if (data.equals(op))
@@ -79,7 +99,7 @@ public class Archivero {
 		return false;
 	}
 
-	private boolean esIncognita(String data) {
+	private static boolean esIncognita(String data) {
 		String[] incs = { "x", "y", "z" };
 		for (String inc : incs)
 			if (data.equals(inc))
