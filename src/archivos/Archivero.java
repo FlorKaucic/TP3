@@ -80,7 +80,7 @@ public class Archivero {
 			pw = new PrintWriter(fw);
 			pw.println(res.length);
 			for (int i = 0; i < res.length; i++)
-				pw.println(res[i]);
+				pw.println((int)res[i]);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
