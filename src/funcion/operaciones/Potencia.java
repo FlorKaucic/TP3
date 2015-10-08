@@ -13,10 +13,10 @@ public class Potencia implements Funcion {
 
 	@Override
 	public double calcular() {
-		double sum = 0;
-		for(int i = 0; i < valor2.calcular(); i++)
-			sum += valor1.calcular();
-		return sum;
+		double pot = valor1.calcular();
+		for(int i = 1; i < valor2.calcular(); i++)
+			pot *= valor1.calcular();
+		return pot;
 	}
 
 	@Override

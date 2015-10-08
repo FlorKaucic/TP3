@@ -14,10 +14,11 @@ public class Main {
 		for(int i = 0; i<val.length;i++){
 			for(int j = 0; j<val[0].length; j++)
 				x.setValor(j, val[i][j]);
-			System.out.println(fc.calcular());
+			res[i] = fc.calcular();
+			System.out.println(res[i]);
 		}
 		System.out.println(fc.remover());
-		Archivero.escribir("salida.out", res);
+		Archivero.escribir("Salidas/salida.out", res);
 	}
 
 }
