@@ -47,8 +47,10 @@ public class Archivero {
 							func = new Resta(v2, v1);
 						else if (data[i].equals("/"))
 							func = new Division(v2, v1);
-						else
+						else if(data[i].equals("*"))
 							func = new Multiplicacion(v2, v1);
+						else
+							func = new Potencia(v2, v1);
 					}
 					fn.agregar(func);
 				} else if (esIncognita(data[i])) {
@@ -92,7 +94,7 @@ public class Archivero {
 	}
 
 	private static boolean esOperador(String data) {
-		String[] ops = { "+", "-", "/", "*", "ln" };
+		String[] ops = { "+", "-", "/", "*", "^", "ln" };
 		for (String op : ops)
 			if (data.equals(op))
 				return true;

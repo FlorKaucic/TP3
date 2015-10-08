@@ -8,7 +8,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		FuncionCompuesta fc = new FuncionCompuesta();
-		double[][] val = Archivero.leer("entrada.in", fc);
+		double[][] val = Archivero.leer("Entradas/entrada.in", fc);
 		double[] res = new double[val.length];
 		ListaIncognitas x = ListaIncognitas.getIncognita(0);
 		for(int i = 0; i<val.length;i++){
