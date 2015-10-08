@@ -10,16 +10,26 @@ import funcion.operaciones.*;
 import funcion.operandos.*;
 
 public class Archivero {
-	public void leer(String ruta, FuncionCompuesta fn, ListaIncognitas[] inc, double[] val) {
+	public int leer(String ruta, FuncionCompuesta fn, double[][] val) {
 		File archivo = null;
 		FileReader fr = null;
 		BufferedReader br = null;
+		int num = 0;
 		try {
 			archivo = new File(ruta);
 			fr = new FileReader(archivo);
 			br = new BufferedReader(fr);
 			String[] data = br.readLine().split(" ");
-			String linea;
+			String linea = br.readLine();
+			num = Integer.parseInt(linea.split(" ")[0]);
+			int tam = Integer.parseInt(linea.split(" ")[1]);
+			val = new double[tam][num];
+			for (int j = 0; j < tam; j++) {
+				linea = br.readLine();
+				for(int k = 0; k < num; k++){
+					val[j][k] = Double.parseDouble(linea.split(" ")[k]);
+				}
+			}
 			for (int i = 0; i < data.length; i++) {
 				if (esOperador(data[i])) {
 					Funcion func;
@@ -55,10 +65,11 @@ public class Archivero {
 				e.printStackTrace();
 			}
 		}
+		return num;
 	}
-	
+
 	public void escribir(String ruta, double[] val) {
-		
+
 	}
 
 	private boolean esOperador(String data) {
