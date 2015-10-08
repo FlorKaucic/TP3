@@ -10,7 +10,7 @@ import funcion.operaciones.*;
 import funcion.operandos.*;
 
 public class Archivero {
-	public void leer(String ruta, FuncionCompuesta fn, Incognita[] inc, double[] val) {
+	public void leer(String ruta, FuncionCompuesta fn, ListaIncognitas[] inc, double[] val) {
 		File archivo = null;
 		FileReader fr = null;
 		BufferedReader br = null;
