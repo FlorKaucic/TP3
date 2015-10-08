@@ -16,7 +16,7 @@ public class ListaIncognitas {
 		return lista;
 	}
 
-	public void setIncognita(int i, double valor) {
+	public void setValor(int i, double valor) {
 		this.valor[i] = valor;
 	}
 

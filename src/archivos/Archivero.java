@@ -54,7 +54,6 @@ public class Archivero {
 					fn.agregar(new Numero(Double.parseDouble(data[i])));
 				}
 			}
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
