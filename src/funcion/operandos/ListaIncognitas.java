@@ -5,15 +5,15 @@ public class ListaIncognitas {
 		this.valor = new double[i+1];
 	}
 
-	private static ListaIncognitas INSTANCE = null;
+	private static ListaIncognitas lista = null;
 	private double[] valor;
 	private static final String[] nombre = { "x", "y", "z" };
 
 	public static ListaIncognitas getIncognita(int i) {
-		if (INSTANCE == null) {
-			INSTANCE = new ListaIncognitas(i);
+		if (lista == null) {
+			lista = new ListaIncognitas(i);
 		}
-		return INSTANCE;
+		return lista;
 	}
 
 	public void setIncognita(int i, double valor) {

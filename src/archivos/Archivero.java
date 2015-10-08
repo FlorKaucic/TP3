@@ -39,7 +39,7 @@ public class Archivero {
 					}
 					fn.agregar(func);
 				} else if (esIncognita(data[i])) {
-					
+					fn.agregar(new Incognita(data[i]));
 				} else {
 					fn.agregar(new Numero(Double.parseDouble(data[i])));
 				}
