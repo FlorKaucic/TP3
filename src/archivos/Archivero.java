@@ -99,18 +99,12 @@ public class Archivero {
 	}
 
 	private static boolean esOperador(String data) {
-		String[] ops = { "+", "-", "/", "*", "^", "ln" };
-		for (String op : ops)
-			if (data.equals(op))
-				return true;
-		return false;
+		String ops = "+-/*^ln";
+		return ops.contains(data);
 	}
 
 	private static boolean esIncognita(String data) {
-		String[] incs = { "x", "y", "z" };
-		for (String inc : incs)
-			if (data.equals(inc))
-				return true;
-		return false;
+		String incs = "xyz";
+		return incs.contains(data);
 	}
 }
